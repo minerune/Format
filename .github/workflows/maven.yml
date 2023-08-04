@@ -27,6 +27,25 @@ jobs:
         run: |
           mvn -B package --file pom.xml
           mkdir staging && cp target/*.jar staging
+      - name: Set up cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: Format
+          path: Format/target/Format-1.0.0-shaded.jar
+      - name: Delete old snapshot
+        uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        with:
+          delete_release: true
+          tag_name: ${{env.VER}}-SNAPSHOT
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -35,12 +54,13 @@ jobs:
         with:
           tag_name: ${{env.VER}}
           release_name: Format v${{env.VER}}
+
       - name: Upload plugin as release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{steps.create_release.outputs.upload_url}}
-          asset_path: target/${{env.NAME}}-${{env.VER}}.jar
+          asset_path: staging/${{env.NAME}}-${{env.VER}}.jar
           asset_name: Format.jar
           asset_content_type: application/java-archive
