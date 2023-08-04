@@ -1,41 +1,39 @@
-# This workflow will build a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
-
-name: Format
+name: Release this plugin
 
 on:
   push:
-    branches: [ master ]
+    branches: [ release ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        
+      - name: Checkout github repository
+        uses: actions/checkout@v3
+
       - name: Set up JDK 17
-        uses: actions/setup-java@v1
+        uses: actions/setup-java@v3
         with:
-          java-version: 17
-          
-      - name: Get name and version
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Get name and version from pom.xml
         run: |
           VER=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "VER=$VER" >> $GITHUB_ENV
           NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           echo "NAME=$NAME" >> $GITHUB_ENV
-          
-      - name: Build Maven Project
-        run: |
-          mvn -B package --file pom.xml
-          mkdir staging && cp target/*.jar staging
-          
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+      - name: Build plugin
+        run: mvn package
+
+      - name: Delete old release
+        uses: dev-drprasad/delete-tag-and-release@v0.2.0
         with:
-          name: Format
-          path: Format/target/Format-1.0.0-shaded.jar
+          delete_release: true
+          tag_name: ${{env.VER}}
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Create Release
         id: create_release
@@ -52,6 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           upload_url: ${{steps.create_release.outputs.upload_url}}
-          asset_path: staging/${{env.NAME}}-${{env.VER}}.jar
+          asset_path: target/${{env.NAME}}-${{env.VER}}.jar
           asset_name: Format.jar
           asset_content_type: application/java-archive
