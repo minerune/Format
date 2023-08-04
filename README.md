@@ -20,7 +20,7 @@ Usage
 player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
   "Hello, %0.",
   "You use %1 :)"
-), "Alex", "Format library"););
+), "Alex", "Format library"));
 
 // Format message with first character.
 player.sendMessage(Format.GREEN.message("Hi, %0.", player.getName()));
