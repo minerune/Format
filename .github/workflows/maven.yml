@@ -13,38 +13,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Set up JDK 17
         uses: actions/setup-java@v1
         with:
           java-version: 17
+          
       - name: Get name and version
         run: |
           VER=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
           echo "VER=$VER" >> $GITHUB_ENV
           NAME=$(mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout)
           echo "NAME=$NAME" >> $GITHUB_ENV
+          
       - name: Build Maven Project
         run: |
           mvn -B package --file pom.xml
           mkdir staging && cp target/*.jar staging
-      - name: Set up cache
-        uses: actions/cache@v2
-        with:
-          path: ~/.m2
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: ${{ runner.os }}-m2
+          
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Format
           path: Format/target/Format-1.0.0-shaded.jar
-      - name: Delete old snapshot
-        uses: dev-drprasad/delete-tag-and-release@v0.2.0
-        with:
-          delete_release: true
-          tag_name: ${{env.VER}}-SNAPSHOT
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Create Release
         id: create_release
