@@ -1,11 +1,11 @@
-# Format [![](https://jitpack.io/v/seetch/Format.svg)](https://jitpack.io/#seetch/Format)
+# Format 
 Lightweight library offering pleasant message formatting for Nukkit plugins.
 
 Installation
 --------
 Place the .jar in your plugins directory.
 
-Maven
+Maven [![](https://jitpack.io/v/seetch/Format.svg)](https://jitpack.io/#seetch/Format)
 --------
 ```xml
 <repositories>
@@ -18,7 +18,7 @@ Maven
 <dependency>
     <groupId>com.github.seetch</groupId>
     <artifactId>Format</artifactId>
-    <version>Tag</version>
+    <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 
