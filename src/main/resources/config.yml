@@ -1,17 +1,17 @@
-# Указывать символ '§' не обязательно!
+# It is not necessary to specify the symbol '§'!
 
-# Префикс перед сообщениями.
-# ВАЖНО: Не используется в формах.
+# Prefix before messages.
+# IMPORTANT: Not used in forms.
 character: "►"
 
-# Стандартный цвет сообщения.
+# Standard message color.
 default-color-message: "f"
-# Стандартный цвет текста в форме.
+# Standard text color in the form.
 default-color-form: "7"
 
 messages:
-  console: "§cЭта команда должна быть выполнена из консоли сервера."
-  ingame: "§cЭта команда должна быть выполнена в игре."
-  permission: "§cУ вас недостаточно прав для выполнения этой команды."
-  # Используется Format.YELLOW.
-  usage: "Используйте: %0"
+  console: "§cThis command must be executed from the server console."
+  ingame: "§cThis command must be executed in the game."
+  permission: "§cYou don't have enough permissions to execute this command."
+  # Format.YELLOW is used.
+  usage: "Use: %0"

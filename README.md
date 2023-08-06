@@ -3,17 +3,26 @@ Lightweight library offering pleasant message formatting for Nukkit plugins.
 
 Installation
 --------
+Place the .jar in your plugins directory.
+
+Usage
+--------
 ```xml
+<repositories>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+
 <dependency>
-  <groupId>me.seetch.format</groupId>
-  <artifactId>Format</artifactId>
-  <version>1.0.0</version>
-  <systemPath>${project.basedir}/libs/Format-1.0.0.jar</systemPath>
-  <scope>system</scope>
+    <groupId>com.github.seetch</groupId>
+    <artifactId>Format</artifactId>
+    <version>Tag</version>
 </dependency>
 ```
 
-Usage
+Example
 --------
 ```java
 // Format more lines, use on forms.
