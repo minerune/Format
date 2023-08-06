@@ -5,7 +5,7 @@ Installation
 --------
 Place the .jar in your plugins directory.
 
-Maven [![](https://jitpack.io/v/seetch/Format.svg)](https://jitpack.io/#seetch/Format)
+Usage
 --------
 ```xml
 <repositories>
@@ -20,6 +20,18 @@ Maven [![](https://jitpack.io/v/seetch/Format.svg)](https://jitpack.io/#seetch/F
     <artifactId>Format</artifactId>
     <version>1.0.1-SNAPSHOT</version>
 </dependency>
+```
+OR
+```gradle
+allprojects {
+	repositories {
+		maven { url 'https://jitpack.io' }
+	}
+}
+
+dependencies {
+	implementation 'com.github.seetch:Format:1.0.1-SNAPSHOT'
+}
 ```
 
 Example
