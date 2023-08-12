@@ -5,9 +5,9 @@
 character: "►"
 
 # Standard message color.
-default-color-message: "f"
+default-color-message: "§f"
 # Standard text color in the form.
-default-color-form: "7"
+default-color-form: "§7"
 
 messages:
   console: "§cThis command must be executed from the server console."
