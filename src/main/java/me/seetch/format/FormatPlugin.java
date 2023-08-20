@@ -7,8 +7,8 @@ import me.seetch.format.utils.Settings;
 
 public class FormatPlugin extends PluginBase {
 
-    @Getter(AccessLevel.PROTECTED)
-    private static Settings settings;
+    @Getter
+    public static Settings settings;
 
     @Override
     public void onEnable() {

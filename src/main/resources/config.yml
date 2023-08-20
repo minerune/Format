@@ -1,6 +1,4 @@
-# It is not necessary to specify the symbol '§'!
-
-# Prefix before messages.
+# Prefix before messages. It is not necessary to specify the color!
 # IMPORTANT: Not used in forms.
 character: "►"
 
