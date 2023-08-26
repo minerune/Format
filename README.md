@@ -18,7 +18,7 @@ Usage
 <dependency>
     <groupId>com.github.seetch</groupId>
     <artifactId>Format</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
 </dependency>
 ```
 OR
@@ -30,7 +30,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.seetch:Format:1.0.1-SNAPSHOT'
+	implementation 'com.github.seetch:Format:1.0.2-SNAPSHOT'
 }
 ```
 
