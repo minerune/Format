@@ -1,5 +1,7 @@
 package me.seetch.format;
 
+import lombok.Setter;
+
 import java.util.List;
 
 public enum Format {
@@ -21,7 +23,6 @@ public enum Format {
     YELLOW("§e"),
     WHITE("§f"),
     MINECOIN_GOLD("§g"),
-
     MATERIAL_QUARTZ("§h"),
     MATERIAL_IRON("§i"),
     MATERIAL_NETHERITE("§j"),
@@ -34,6 +35,13 @@ public enum Format {
     MATERIAL_AMETHYST("§u");
 
     private final String color;
+
+    @Setter
+    private static String character = "►";
+    @Setter
+    private static String defaultColorMessage = "§f";
+    @Setter
+    private static String defaultColorForm = "§7";
 
     Format(String color) {
         this.color = color;
@@ -49,10 +57,10 @@ public enum Format {
         for (String line : lines) {
             int i = 0;
             for (String variable : variables) {
-                line = line.replace("%" + i, getColor() + variable + FormatPlugin.getSettings().getDefaultColorForm());
+                line = line.replace("%" + i, getColor() + variable + defaultColorForm);
                 i++;
             }
-            result.append(FormatPlugin.getSettings().getDefaultColorForm()).append(line).append("\n");
+            result.append(defaultColorForm).append(line).append("\n");
         }
         return String.valueOf(result.append("\n"));
     }
@@ -61,36 +69,19 @@ public enum Format {
     public String message(String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
-            message = message.replace("%" + i, getColor() + variable + FormatPlugin.getSettings().getDefaultColorMessage());
+            message = message.replace("%" + i, getColor() + variable + defaultColorMessage);
             i++;
         }
-        return getColor() + FormatPlugin.getSettings().getCharacter() + " " + FormatPlugin.getSettings().getDefaultColorMessage() + message;
+        return getColor() + character + " " + defaultColorMessage + message;
     }
 
     // Format message without first character.
     public String clean(String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
-            message = message.replace("%" + i, getColor() + variable + FormatPlugin.getSettings().getDefaultColorMessage());
+            message = message.replace("%" + i, getColor() + variable + defaultColorMessage);
             i++;
         }
         return message;
-    }
-
-    // Some standard messages used in my projects.
-    public static String console() {
-        return FormatPlugin.getSettings().getMessages().getConsole();
-    }
-
-    public static String ingame() {
-        return FormatPlugin.getSettings().getMessages().getIngame();
-    }
-
-    public static String permission() {
-        return FormatPlugin.getSettings().getMessages().getPermission();
-    }
-
-    public static String usage(String command) {
-        return YELLOW.message(FormatPlugin.getSettings().getMessages().getUsage(), command);
     }
 }
