@@ -34,10 +34,10 @@ Usage
 --------
 ```java
 // Format more lines, use on forms.
-player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
-  "Hey, %0.",
-  "It's-a Me, %1!"
-), "Steve", "Mario"));
+    player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
+      "Hey, %0.",
+      "It's-a Me, %1!"
+    ), "Steve", "Mario"));
 // Result: §7Hey, §1Steve§7.\n§7It's-a Me, §1%1§7!
 
 // Another format more lines, use on forms.
@@ -48,19 +48,19 @@ player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
 // Result: §1Hey, §7Steve§1.\n§1It's-a Me, §7%1§1!        
 
 // Format message with first character.
-player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
+    player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
 // Result: §a► §fHey, §aseetch§f.
 
 // Another format message with first character.
-player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
+    player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
 // Result: §f► §aHey, §fseetch§a.        
 
 // Format message without first character.
-player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
+    player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
 // Result: §fGoodbye, §aseetch§f.
 
 // Another format message without first character.
-player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
+    player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
 // Result: §aGoodbye, §fseetch§a.
 ```
 
