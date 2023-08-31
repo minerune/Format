@@ -65,6 +65,19 @@ public enum Format {
         return String.valueOf(result.append("\n"));
     }
 
+    public String linesOtherwise(List<String> lines, String... variables) {
+        StringBuilder result = new StringBuilder("");
+        for (String line : lines) {
+            int i = 0;
+            for (String variable : variables) {
+                line = line.replace("%" + i, defaultColorForm + variable + getColor());
+                i++;
+            }
+            result.append(getColor()).append(line).append("\n");
+        }
+        return String.valueOf(result.append("\n"));
+    }
+
     // Format message with first character.
     public String message(String message, String... variables) {
         int i = 0;
@@ -75,11 +88,29 @@ public enum Format {
         return getColor() + character + " " + defaultColorMessage + message;
     }
 
+    public String messageOtherwise(String message, String... variables) {
+        int i = 0;
+        for (String variable : variables) {
+            message = message.replace("%" + i, defaultColorMessage + variable + getColor());
+            i++;
+        }
+        return defaultColorMessage + character + " " + getColor() + message;
+    }
+
     // Format message without first character.
     public String clean(String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
             message = message.replace("%" + i, getColor() + variable + defaultColorMessage);
+            i++;
+        }
+        return message;
+    }
+
+    public String cleanOtherwise(String message, String... variables) {
+        int i = 0;
+        for (String variable : variables) {
+            message = message.replace("%" + i, defaultColorMessage + variable + getColor());
             i++;
         }
         return message;
