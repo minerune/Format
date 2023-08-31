@@ -1,8 +1,0 @@
-name: Format
-main: me.seetch.format.FormatPlugin
-version: "${pom.version}"
-api: 1.0.13
-load: STARTUP
-authors:
-  - "https://github.com/seetch"
-website: "https://github.com/seetch/Format"
