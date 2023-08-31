@@ -34,14 +34,14 @@ public enum Format {
     MATERIAL_LAPIS("§t"),
     MATERIAL_AMETHYST("§u");
 
-    private final String color;
-
     @Setter
     private static String character = "►";
     @Setter
     private static String defaultColorMessage = "§f";
     @Setter
     private static String defaultColorForm = "§7";
+
+    private final String color;
 
     Format(String color) {
         this.color = color;
@@ -51,13 +51,21 @@ public enum Format {
         return color;
     }
 
-    // Format more lines, use on forms.
+    public String colorize(String message, String... variables) {
+        int i = 0;
+        for (String variable : variables) {
+            message = message.replace("%" + i, color + variable + defaultColorMessage);
+            i++;
+        }
+        return color + character + " " + defaultColorMessage + message;
+    }
+
     public String lines(List<String> lines, String... variables) {
         StringBuilder result = new StringBuilder("");
         for (String line : lines) {
             int i = 0;
             for (String variable : variables) {
-                line = line.replace("%" + i, getColor() + variable + defaultColorForm);
+                line = line.replace("%" + i, color + variable + defaultColorForm);
                 i++;
             }
             result.append(defaultColorForm).append(line).append("\n");
@@ -65,54 +73,43 @@ public enum Format {
         return String.valueOf(result.append("\n"));
     }
 
-    public String linesOtherwise(List<String> lines, String... variables) {
-        StringBuilder result = new StringBuilder(getColor());
+    public String clean(String message, String... variables) {
+        int i = 0;
+        for (String variable : variables) {
+            message = message.replace("%" + i, color + variable + defaultColorMessage);
+            i++;
+        }
+        return defaultColorMessage + message;
+    }
+
+    public String reverseColorize(String message, String... variables) {
+        int i = 0;
+        for (String variable : variables) {
+            message = message.replace("%" + i, defaultColorMessage + variable + color);
+            i++;
+        }
+        return color + character + " " +  color + message;
+    }
+
+    public String reverseLines(List<String> lines, String... variables) {
+        StringBuilder result = new StringBuilder();
         for (String line : lines) {
             int i = 0;
             for (String variable : variables) {
-                line = line.replace("%" + i, defaultColorForm + variable + getColor());
+                line = line.replace("%" + i, defaultColorForm + variable + color);
                 i++;
             }
-            result.append(getColor()).append(line).append("\n");
+            result.append(color).append(line).append("\n");
         }
         return String.valueOf(result.append("\n"));
     }
 
-    // Format message with first character.
-    public String message(String message, String... variables) {
+    public String reverseClean(String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
-            message = message.replace("%" + i, getColor() + variable + defaultColorMessage);
+            message = message.replace("%" + i, defaultColorMessage + variable + color);
             i++;
         }
-        return getColor() + character + " " + defaultColorMessage + message;
-    }
-
-    public String messageOtherwise(String message, String... variables) {
-        int i = 0;
-        for (String variable : variables) {
-            message = message.replace("%" + i, defaultColorMessage + variable + getColor());
-            i++;
-        }
-        return defaultColorMessage + character + " " + getColor() + message;
-    }
-
-    // Format message without first character.
-    public String clean(String message, String... variables) {
-        int i = 0;
-        for (String variable : variables) {
-            message = message.replace("%" + i, getColor() + variable + defaultColorMessage);
-            i++;
-        }
-        return getColor() + message;
-    }
-
-    public String cleanOtherwise(String message, String... variables) {
-        int i = 0;
-        for (String variable : variables) {
-            message = message.replace("%" + i, defaultColorMessage + variable + getColor());
-            i++;
-        }
-        return getColor() + message;
+        return color + message;
     }
 }

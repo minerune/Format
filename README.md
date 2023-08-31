@@ -1,5 +1,5 @@
 # Format 
-⚡ Lightweight library offering pleasant message formatting for Nukkit plugins.
+⚡ Lightweight library offering pleasant message formatting for Nukkit plugins. Used on [@minerune](https://github.com/minerune).
 
 Installation
 --------
@@ -14,7 +14,7 @@ Installation
 <dependency>
     <groupId>com.github.seetch</groupId>
     <artifactId>Format</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.6-SNAPSHOT</version>
 </dependency>
 ```
 OR
@@ -26,42 +26,25 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.seetch:Format:1.0.5-SNAPSHOT'
+	implementation 'com.github.seetch:Format:1.0.6-SNAPSHOT'
 }
 ```
 
 Usage
 --------
 ```java
-// Format more lines, use on forms.
-    player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
-      "Hey, %0.",
-      "It's-a Me, %1!"
-    ), "Steve", "Mario"));
-// Result: §7Hey, §1Steve§7.\n§7It's-a Me, §1Mario§7!
-
-// Another format more lines, use on forms.
-    player.sendMessage(Format.DARK_BLUE.linesOtherwise(Arrays.asList(
+player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
+// Result: §a► §fHey, §aseetch§f.
+        
+player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
     "Hey, %0.",
     "It's-a Me, %1!"
-    ), "Steve", "Mario"));
-// Result: §1Hey, §7Steve§1.\n§1It's-a Me, §7Mario§1!        
-
-// Format message with first character.
-    player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
-// Result: §a► §fHey, §aseetch§f.
-
-// Another format message with first character.
-    player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
-// Result: §f► §aHey, §fseetch§a.        
-
+), "Steve", "Mario"));
+// Result: §7Hey, §1Steve§7.\n§7It's-a Me, §1Mario§7!
+        
 // Format message without first character.
-    player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
+player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
 // Result: §fGoodbye, §aseetch§f.
-
-// Another format message without first character.
-    player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
-// Result: §aGoodbye, §fseetch§a.
 ```
 
 Settings
