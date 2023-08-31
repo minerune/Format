@@ -14,7 +14,7 @@ Installation
 <dependency>
     <groupId>com.github.seetch</groupId>
     <artifactId>Format</artifactId>
-    <version>1.0.4-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
 </dependency>
 ```
 OR
@@ -26,7 +26,7 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.seetch:Format:1.0.4-SNAPSHOT'
+	implementation 'com.github.seetch:Format:1.0.5-SNAPSHOT'
 }
 ```
 
