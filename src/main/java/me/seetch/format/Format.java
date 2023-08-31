@@ -66,7 +66,7 @@ public enum Format {
     }
 
     public String linesOtherwise(List<String> lines, String... variables) {
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder(getColor());
         for (String line : lines) {
             int i = 0;
             for (String variable : variables) {
@@ -104,7 +104,7 @@ public enum Format {
             message = message.replace("%" + i, getColor() + variable + defaultColorMessage);
             i++;
         }
-        return message;
+        return getColor() + message;
     }
 
     public String cleanOtherwise(String message, String... variables) {
@@ -113,6 +113,6 @@ public enum Format {
             message = message.replace("%" + i, defaultColorMessage + variable + getColor());
             i++;
         }
-        return message;
+        return getColor() + message;
     }
 }
