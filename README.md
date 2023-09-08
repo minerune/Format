@@ -1,5 +1,5 @@
 # Format 
-⚡ Lightweight library offering pleasant message formatting for Nukkit plugins. Used on [@minerune](https://github.com/minerune).
+⚡ Lightweight library offering pleasant message formatting for Nukkit plugins.
 
 Installation
 --------
