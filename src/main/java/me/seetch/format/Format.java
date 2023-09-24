@@ -1,7 +1,5 @@
 package me.seetch.format;
 
-import lombok.Setter;
-
 import java.util.List;
 
 public enum Format {
@@ -34,12 +32,14 @@ public enum Format {
     MATERIAL_LAPIS("§t"),
     MATERIAL_AMETHYST("§u");
 
-    @Setter
-    private static String character = "►";
-    @Setter
-    private static String defaultColorMessage = "§f";
-    @Setter
-    private static String defaultColorForm = "§7";
+    private static final String DEFAULT = "§7";
+    private static final String DEFAULT_FORM = "§7";
+
+    public static final String PRIMARY = String.valueOf(AQUA);
+    public static final String SECONDARY = String.valueOf(LIGHT_PURPLE);
+    public static final String SUCCESS = String.valueOf(GREEN);
+    public static final String WARN = String.valueOf(YELLOW);
+    public static final String ERROR = String.valueOf(RED);
 
     private final String color;
 
@@ -51,13 +51,13 @@ public enum Format {
         return color;
     }
 
-    public String colorize(String message, String... variables) {
+    public String colorize(String character, String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
-            message = message.replace("%" + i, color + variable + defaultColorMessage);
+            message = message.replace("%" + i, color + variable + DEFAULT);
             i++;
         }
-        return color + character + " " + defaultColorMessage + message;
+        return color + character + " " + DEFAULT + message;
     }
 
     public String lines(List<String> lines, String... variables) {
@@ -65,10 +65,10 @@ public enum Format {
         for (String line : lines) {
             int i = 0;
             for (String variable : variables) {
-                line = line.replace("%" + i, color + variable + defaultColorForm);
+                line = line.replace("%" + i, color + variable + DEFAULT_FORM);
                 i++;
             }
-            result.append(defaultColorForm).append(line).append("\n");
+            result.append(DEFAULT_FORM).append(line).append("\n");
         }
         return String.valueOf(result.append("\n"));
     }
@@ -76,19 +76,19 @@ public enum Format {
     public String clean(String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
-            message = message.replace("%" + i, color + variable + defaultColorMessage);
+            message = message.replace("%" + i, color + variable + DEFAULT);
             i++;
         }
-        return defaultColorMessage + message;
+        return DEFAULT + message;
     }
 
-    public String reverseColorize(String message, String... variables) {
+    public String reverseColorize(String character, String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
-            message = message.replace("%" + i, defaultColorMessage + variable + color);
+            message = message.replace("%" + i, DEFAULT + variable + color);
             i++;
         }
-        return color + character + " " +  color + message;
+        return color + character + " " + color + message;
     }
 
     public String reverseLines(List<String> lines, String... variables) {
@@ -96,7 +96,7 @@ public enum Format {
         for (String line : lines) {
             int i = 0;
             for (String variable : variables) {
-                line = line.replace("%" + i, defaultColorForm + variable + color);
+                line = line.replace("%" + i, DEFAULT_FORM + variable + color);
                 i++;
             }
             result.append(color).append(line).append("\n");
@@ -107,7 +107,7 @@ public enum Format {
     public String reverseClean(String message, String... variables) {
         int i = 0;
         for (String variable : variables) {
-            message = message.replace("%" + i, defaultColorMessage + variable + color);
+            message = message.replace("%" + i, DEFAULT + variable + color);
             i++;
         }
         return color + message;
