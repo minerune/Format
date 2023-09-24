@@ -14,7 +14,7 @@ Installation
 <dependency>
     <groupId>com.github.seetch</groupId>
     <artifactId>Format</artifactId>
-    <version>1.0.6-SNAPSHOT</version>
+    <version>1.0.7-SNAPSHOT</version>
 </dependency>
 ```
 OR
@@ -26,14 +26,14 @@ allprojects {
 }
 
 dependencies {
-	implementation 'com.github.seetch:Format:1.0.6-SNAPSHOT'
+	implementation 'com.github.seetch:Format:1.0.7-SNAPSHOT'
 }
 ```
 
 Usage
 --------
 ```java
-player.sendMessage(Format.GREEN.message("Hey, %0.", player.getName()));
+player.sendMessage(Format.GREEN.colorize(">", "Hey, %0.", player.getName()));
 // Result: §a► §fHey, §aseetch§f.
         
 player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
@@ -45,14 +45,6 @@ player.sendMessage(Format.DARK_BLUE.lines(Arrays.asList(
 // Format message without first character.
 player.sendMessage(Format.YELLOW.clean("Goodbye, %0.", player.getName()));
 // Result: §fGoodbye, §aseetch§f.
-```
-
-Settings
---------
-```java
-Format.setCharacter("►");            // Set first character.
-Format.setDefaultColorMessage("§f"); // Set default color message.
-Format.setDefaultColorForm("§7");    // Set default color form.
 ```
 
 License
