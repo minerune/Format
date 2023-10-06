@@ -5,16 +5,16 @@ Installation
 --------
 ```xml
 <repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
+    <repository>
+        <id>minerune-repo</id>
+        <url>https://repo.minerune.online/</url>
+    </repository>
 </repositories>
 
 <dependency>
-    <groupId>com.github.seetch</groupId>
+    <groupId>me.seetch.format</groupId>
     <artifactId>Format</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
