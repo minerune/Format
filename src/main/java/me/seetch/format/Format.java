@@ -1,25 +1,47 @@
 package me.seetch.format;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
 import java.util.List;
 
+@Getter
+@AllArgsConstructor
 public enum Format {
 
-    BLACK("§0"), DARK_BLUE("§1"), DARK_GREEN("§2"), DARK_AQUA("§3"), DARK_RED("§4"), DARK_PURPLE("§5"), GOLD("§6"), GRAY("§7"), DARK_GRAY("§8"), BLUE("§9"), GREEN("§a"), AQUA("§b"), RED("§c"), LIGHT_PURPLE("§d"), YELLOW("§e"), WHITE("§f"), MINECOIN_GOLD("§g"), MATERIAL_QUARTZ("§h"), MATERIAL_IRON("§i"), MATERIAL_NETHERITE("§j"), MATERIAL_REDSTONE("§m"), MATERIAL_COPPER("§n"), MATERIAL_GOLD("§p"), MATERIAL_EMERALD("§q"), MATERIAL_DIAMOND("§s"), MATERIAL_LAPIS("§t"), MATERIAL_AMETHYST("§u"),
+    BLACK("§0"),
+    DARK_BLUE("§1"),
+    DARK_GREEN("§2"),
+    DARK_AQUA("§3"),
+    DARK_RED("§4"),
+    DARK_PURPLE("§5"),
+    GOLD("§6"),
+    GRAY("§7"),
+    DARK_GRAY("§8"),
+    BLUE("§9"),
+    GREEN("§a"),
+    AQUA("§b"),
+    RED("§c"),
+    LIGHT_PURPLE("§d"),
+    YELLOW("§e"),
+    WHITE("§f"),
+    MINECOIN_GOLD("§g"),
 
-    PRIMARY("§b"), SECONDARY("§d"), SUCCESS("§a"), WARN("§e"), ERROR("§c");
+    MATERIAL_QUARTZ("§h"),
+    MATERIAL_IRON("§i"),
+    MATERIAL_NETHERITE("§j"),
+    MATERIAL_REDSTONE("§m"),
+    MATERIAL_COPPER("§n"),
+    MATERIAL_GOLD("§p"),
+    MATERIAL_EMERALD("§q"),
+    MATERIAL_DIAMOND("§s"),
+    MATERIAL_LAPIS("§t"),
+    MATERIAL_AMETHYST("§u");
 
     private static final String DEFAULT = "§7";
     private static final String DEFAULT_FORM = "§7";
 
     private final String color;
-
-    Format(String color) {
-        this.color = color;
-    }
-
-    private String getColor() {
-        return color;
-    }
 
     public String colorize(String character, String message, String... variables) {
         int i = 0;
@@ -31,7 +53,7 @@ public enum Format {
     }
 
     public String lines(List<String> lines, String... variables) {
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         for (String line : lines) {
             int i = 0;
             for (String variable : variables) {

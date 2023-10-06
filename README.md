@@ -17,18 +17,6 @@ Installation
     <version>1.0.7-SNAPSHOT</version>
 </dependency>
 ```
-OR
-```gradle
-allprojects {
-	repositories {
-		maven { url 'https://jitpack.io' }
-	}
-}
-
-dependencies {
-	implementation 'com.github.seetch:Format:1.0.7-SNAPSHOT'
-}
-```
 
 Usage
 --------
