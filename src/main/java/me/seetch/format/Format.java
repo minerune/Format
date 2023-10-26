@@ -38,7 +38,7 @@ public enum Format {
     MATERIAL_LAPIS("§t"),
     MATERIAL_AMETHYST("§u");
 
-    private static final String DEFAULT = "§7";
+    private static final String DEFAULT = "§f";
     private static final String DEFAULT_FORM = "§7";
 
     private final String color;

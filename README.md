@@ -6,15 +6,15 @@ Installation
 ```xml
 <repositories>
     <repository>
-        <id>minerune-repo</id>
-        <url>https://repo.minerune.online/</url>
+        <id>minerune-releases</id>
+        <url>https://repo.minerune.online/releases</url>
     </repository>
 </repositories>
 
 <dependency>
     <groupId>me.seetch.format</groupId>
     <artifactId>Format</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
